@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <h1>E-Learn</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="course.html">Courses</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="certificate.html">Certificate</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Signup</a></li>
+  </ul>
+</nav>
+
+<!-- Quiz Section -->
+<div class="quiz-box fade-in">
+  <h2>Quiz: Web Development Basics</h2>
+
+  <form id="quizForm">
+    <!-- Q1 -->
+    <div class="question">
+      <p>1. What does HTML stand for?</p>
+      <label><input type="radio" name="q1" value="a">Hyper Text Markup Language</label>
+      <label><input type="radio" name="q1" value="b">Home Tool Markup Language</label>
+      <label><input type="radio" name="q1" value="c">Hyperlinks Text Marking Language</label>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <p>2. Which tag is used to insert an image in HTML?</p>
+      <label><input type="radio" name="q2" value="a">&lt;img&gt;</label>
+      <label><input type="radio" name="q2" value="b">&lt;image&gt;</label>
+      <label><input type="radio" name="q2" value="c">&lt;src&gt;</label>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <p>3. What property is used to change text color in CSS?</p>
+      <label><input type="radio" name="q3" value="a">font-color</label>
+      <label><input type="radio" name="q3" value="b">text-style</label>
+      <label><input type="radio" name="q3" value="c">color</label>
+    </div>
+
+    <button type="submit">Submit Quiz</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<!-- Script -->
+<script>
+  document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const correctAnswers = {
+      q1: "a",
+      q2: "a",
+      q3: "c"
+    };
+
+    let score = 0;
+
+    for (const q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) {
+        score++;
+      }
+    }
+
+    const total = Object.keys(correctAnswers).length;
+    document.getElementById("result").textContent = `🎉 You scored ${score} out of ${total}!`;
+  });
+</script>
+
+</body>
+</html>
+
+
+
